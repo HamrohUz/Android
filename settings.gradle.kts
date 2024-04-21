@@ -1,4 +1,7 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -11,6 +14,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+
 }
 
 rootProject.name = "Hamroh"
