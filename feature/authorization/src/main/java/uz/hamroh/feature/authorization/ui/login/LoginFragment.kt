@@ -1,24 +1,29 @@
 package uz.hamroh.feature.authorization.ui.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import uz.hamroh.feature.authorization.R
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import uz.hamroh.coroutines.launchMain
+import uz.hamroh.navigation.AuthNavigation
+import uz.hamroh.ui.base.ComposeFragment
+import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+@AndroidEntryPoint
+class LoginFragment : ComposeFragment() {
+
+    @Inject lateinit var authNavigation: AuthNavigation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        lifecycleScope.launchMain { delay(5000)  }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setContent {
+            LoginContent(authNavigation)
+        }
     }
 
 }

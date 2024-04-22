@@ -29,6 +29,8 @@ class CommonPlugin : BasePlugin() {
                 targetCompatibility = JavaVersion.VERSION_19
             }
 
+
+
             tasks.withType<KotlinCompile>().configureEach {
                 kotlinOptions {
                     jvmTarget = "19"

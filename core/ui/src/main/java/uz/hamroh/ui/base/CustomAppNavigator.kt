@@ -1,4 +1,5 @@
-package uz.hamroh.navigation
+package uz.hamroh.ui.base
+
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -6,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import uz.hamroh.ui.R
 
 abstract class CustomAppNavigator(
     activity: FragmentActivity,

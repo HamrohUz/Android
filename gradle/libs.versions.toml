@@ -1,10 +1,12 @@
 [versions]
 agp = "8.3.2"
 kotlin = "1.9.23"
+chucker = "4.0.0"
 compose-compiler = "1.5.12"
 ksp-version = "1.9.23-1.0.20"
 core-ktx = "1.13.0"
 kotlinCoroutines = "1.7.1"
+retrofit = "2.9.0"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
@@ -22,6 +24,9 @@ material = "1.11.0"
 cicerone = "7.1"
 room = "2.6.1"
 paging = "3.2.1"
+fragmentKtx = "1.6.2"
+constraintlayoutCore = "1.0.4"
+materialVersion = "1.11.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -40,7 +45,7 @@ compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4
 compose-debug = { module = "androidx.compose.ui:ui-test-manifest", version = "1.6.6" }
 compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
-compose-paging = {module = "androidx.paging:paging-compose", version.ref ="paging"}
+compose-paging = { module = "androidx.paging:paging-compose", version.ref = "paging" }
 
 androidToolsBuildGradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 orbit = { module = "org.orbit-mvi:orbit-core", version.ref = "orbit" }
@@ -49,11 +54,13 @@ kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.r
 kotlinJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
 kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 
-cicerone = {module = "com.github.terrakok:cicerone", version.ref ="cicerone" }
-
-
-hilt-android = { group = "com.google.dagger", name = "hilt-android" , version.ref = "hilt-version"}
-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler" , version.ref = "hilt-version"}
+cicerone = { module = "com.github.terrakok:cicerone", version.ref = "cicerone" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+converter-simplexml = { module = "com.squareup.retrofit2:converter-simplexml", version.ref = "retrofit" }
+chucker-lib = { module = "com.github.chuckerteam.chucker:library", version.ref = "chucker" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-version" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt-version" }
 
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
 kotlinxCorutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
@@ -71,6 +78,9 @@ room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+androidx-constraintlayout-core = { group = "androidx.constraintlayout", name = "constraintlayout-core", version.ref = "constraintlayoutCore" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -79,10 +89,9 @@ org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 googleServices = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 firebaseCrashlytics = { id = "com.google.firebase.crashlytics" }
-kotlinKapt = { id = "kotlin-kapt", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
-kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref ="ksp-version" }
-hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref ="hilt-version" }
+kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt-version" }
 
 
 [bundles]
@@ -90,4 +99,6 @@ activity = ["activity-ktx", "activity-compose", "activity-appcompat"]
 compose = ["compose-ui", "compose-debug", "compose-material", "compose-paging",
     "compose-ui-tooling", "compose-ui-tooling-preview", "compose-material3"]
 room = ["room-runtime", "room-ktx", "room-paging"]
+network = ["cicerone", "retrofit", "converter-gson", "converter-simplexml", "chucker-lib"]
+
 

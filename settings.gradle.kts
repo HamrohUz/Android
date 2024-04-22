@@ -1,5 +1,8 @@
 import org.gradle.api.initialization.resolve.RepositoriesMode
 
+include(":feature:trip")
+
+
 pluginManagement {
     includeBuild("build-logic")
     repositories {
@@ -21,7 +24,6 @@ rootProject.name = "Hamroh"
 include(":app")
 include(":core:network")
 include(":core:ui")
-include(":core:di")
 include(":core:coroutines")
 include(":navigation")
 include(":feature:authorization")
