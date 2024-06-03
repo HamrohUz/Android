@@ -9,7 +9,9 @@ interface AuthNavigation {
 
     fun navigateToSignUp()
 
-    fun navigateToEmailVerification()
+    fun navigateToEmailVerification(email: String, routeIntent: RouteIntent = RouteIntent.VerifyEmail)
+
+    fun navigateToAuthStatus(title: String, message: String)
 
     fun navigateBack()
 }

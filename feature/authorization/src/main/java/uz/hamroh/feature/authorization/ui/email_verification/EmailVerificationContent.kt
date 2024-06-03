@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import uz.hamroh.feature.authorization.R
 import uz.hamroh.navigation.AuthNavigation
@@ -37,7 +38,7 @@ fun EmailVerificationContent(authNavigation: AuthNavigation){
             .padding(horizontal = 16.dp),
     ) {
         Image(
-            painter = painterResource(R.drawable.chevron_left),
+            painter = painterResource(uz.hamroh.ui.R.drawable.ic_chevron_left),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -63,7 +64,7 @@ fun EmailVerificationContent(authNavigation: AuthNavigation){
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 20.dp),
-            onClick = { authNavigation.navigateToLogin() }
+            onClick = { authNavigation.navigateToAuthStatus("Аккаунт создан", "Теперь вы можете пользоваться нашим приложением!") }
         ) {
             HamrohButtonText(text = stringResource(R.string.email_verification_confirm))
         }

@@ -1,5 +1,14 @@
 import org.gradle.api.initialization.resolve.RepositoriesMode
 
+include(":core:store")
+
+
+include(":feature:profile")
+
+
+include(":feature:chat")
+
+
 include(":feature:trip")
 
 

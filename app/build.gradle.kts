@@ -8,6 +8,7 @@ plugins {
 
 android {
     namespace = "uz.hamroh"
+
 }
 
 dependencies {
@@ -15,6 +16,9 @@ dependencies {
     implementation(project(":feature:authorization"))
     implementation(project(":feature:trip"))
     implementation(project(":core:ui"))
+    implementation(project(":core:network"))
+    implementation(project(":core:coroutines"))
+    implementation(project(":core:store"))
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }
