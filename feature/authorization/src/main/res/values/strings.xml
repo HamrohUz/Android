@@ -1,0 +1,23 @@
+<resources>
+    <string name="auth_selection_header_create_account">Создайте аккаунт</string>
+    <string name="auth_selection_header_description">И пользуйтесь всеми\nвозможностями поездок</string>
+    <string name="auth_selection_button_login">Войти</string>
+    <string name="auth_selection_button_signup">Зарегистрироваться</string>
+    <string name="signup_header">Создать\nучетную запись</string>
+    <string name="signup_email_hint">Ваш Email</string>
+    <string name="signup_password_hint">Ваш Пароль</string>
+    <string name="signup_accept_confidentiality_politics">Я принимаю пользовательское соглашение</string>
+    <string name="signup_create_account">Создать аккаунт </string>
+    <string name="signup_with_google">Или войти с помощью:</string>
+    <string name="signup_already_registered">Уже есть аккаунт?  Войти</string>
+    <string name="login_header_and_button">Войти</string>
+    <string name="login_with_google">Войти с помощью</string>
+    <string name="login_redirect_to_signup">Нет аккаунта?  Зарегистрироваться</string>
+    <string name="login_forgot_password">Забыли пароль?</string>
+    <string name="email_verification_header">Проверьте ваши\nсообщения</string>
+    <string name="email_verification_description">Мы отправили код на %s</string>
+    <string name="email_verification_confirm">Подтвердить</string>
+    <string name="restore_password_email_input">Ваш email</string>
+    <string name="restore_password_password_input">Ваш новый пароль</string>
+    <string name="restore_password_next_button">Далее</string>
+</resources>
