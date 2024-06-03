@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="validation_result_accepted"> </string>
+    <string name="validation_result_length_short">Необходимо ввести минимум 8 символов</string>
+    <string name="validation_result_at_least_one_upper_case_symbol">Требуется хотя бы один символ в верхнем регистре</string>
+    <string name="validation_result_at_least_one_number">Требуется хотя бы одна цифра</string>
+    <string name="validation_result_do_not_matched">Пароль не совпадает</string>
+    <string name="validation_result_empty">Необходимо ввести данные</string>
+    <string name="validation_result_incorrect_date">Некорректная дата</string>
+    <string name="validation_result_incorrect_email">Некорректная почта</string>
+</resources>

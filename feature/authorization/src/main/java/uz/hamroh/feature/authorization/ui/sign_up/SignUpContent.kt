@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import uz.hamroh.feature.authorization.R
@@ -58,7 +59,7 @@ fun SignUpContent(authNavigation: AuthNavigation) {
     ) {
         Spacer(modifier = Modifier.size(30.dp))
         Image(
-            painter = painterResource(R.drawable.chevron_left),
+            painter = painterResource(uz.hamroh.ui.R.drawable.ic_chevron_left),
             contentDescription = null,
             modifier = Modifier.align(Alignment.Start)
                 .clickable(
@@ -101,7 +102,8 @@ fun SignUpContent(authNavigation: AuthNavigation) {
                 )
             },
             value = password,
-            onValueChange = { password = it }
+            onValueChange = { password = it },
+            visualTransformation = PasswordVisualTransformation()
         )
         Spacer(modifier = Modifier.size(10.dp))
         RoundCheckboxWithText()
@@ -123,7 +125,7 @@ fun SignUpContent(authNavigation: AuthNavigation) {
         )
         Spacer(modifier = Modifier.size(20.dp))
         Image(
-            painter = painterResource(R.drawable.google_icon),
+            painter = painterResource(uz.hamroh.ui.R.drawable.ic_google),
             contentDescription = null,
             modifier = Modifier
                 .size(40.dp)

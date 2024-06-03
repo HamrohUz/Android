@@ -19,8 +19,4 @@ abstract class BaseActivity : AppCompatActivity() {
         navigatorHolder.removeNavigator()
         super.onPause()
     }
-
-    protected fun handleNavigation() {
-
-    }
 }

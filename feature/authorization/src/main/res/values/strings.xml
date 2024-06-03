@@ -17,4 +17,7 @@
     <string name="email_verification_header">Проверьте ваши\nсообщения</string>
     <string name="email_verification_description">Мы отправили код на %s</string>
     <string name="email_verification_confirm">Подтвердить</string>
+    <string name="restore_password_email_input">Ваш email</string>
+    <string name="restore_password_password_input">Ваш новый пароль</string>
+    <string name="restore_password_next_button">Далее</string>
 </resources>

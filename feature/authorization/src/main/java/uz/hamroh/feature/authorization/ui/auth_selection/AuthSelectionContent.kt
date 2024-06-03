@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import uz.hamroh.feature.authorization.R
 import uz.hamroh.navigation.AuthNavigation
@@ -22,8 +23,12 @@ import uz.hamroh.ui.components.HamrohFilledButton
 import uz.hamroh.ui.components.HamrohHeaderText
 import uz.hamroh.ui.components.HamrohOutlinedButton
 
+@Preview(showBackground = true)
 @Composable
-fun AuthSelectionContent(authNavigation: AuthNavigation) {
+private fun AuthSelectionContentPreview() = AuthSelectionContent(state = AuthSelectionState()) {}
+
+@Composable
+fun AuthSelectionContent(state: AuthSelectionState, onEffect: (AuthSelectionEffect) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -31,7 +36,7 @@ fun AuthSelectionContent(authNavigation: AuthNavigation) {
     ) {
         Spacer(modifier = Modifier.size(50.dp))
         Image(
-            painter = painterResource(R.drawable.logo),
+            painter = painterResource(uz.hamroh.ui.R.drawable.ic_logo),
             contentDescription = null,
             modifier = Modifier
                 .size(130.dp)
@@ -51,7 +56,7 @@ fun AuthSelectionContent(authNavigation: AuthNavigation) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            onClick = { authNavigation.navigateToLogin() }
+            onClick = { onEffect(AuthSelectionEffect.NavigateToLogin) }
         ) {
             HamrohButtonText(text = stringResource(R.string.auth_selection_button_login))
         }
@@ -60,15 +65,16 @@ fun AuthSelectionContent(authNavigation: AuthNavigation) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            onClick = { authNavigation.navigateToSignUp() }) {
+            onClick = { onEffect(AuthSelectionEffect.NavigateToSignUp) }) {
             HamrohButtonText(text = stringResource(R.string.auth_selection_button_signup))
         }
         Spacer(modifier = Modifier.size(10.dp))
         Image(
-            painter = painterResource(R.drawable.city),
+            painter = painterResource(uz.hamroh.ui.R.drawable.city),
             contentDescription = null,
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.FillBounds
         )
     }
 }
+

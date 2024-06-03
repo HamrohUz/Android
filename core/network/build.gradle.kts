@@ -15,12 +15,12 @@ android {
             buildConfig = true
         }
 
-        buildConfigField("String", "BACKEND_URL", "\"http://147.45.146.93:9000/\"")
+        buildConfigField("String", "BACKEND_URL", "\"http://185.247.17.206:9000/\"")
     }
 }
 
 dependencies {
-    implementation(libs.bundles.network)
+    api(libs.bundles.network)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }

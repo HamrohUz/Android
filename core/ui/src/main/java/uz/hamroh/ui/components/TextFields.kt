@@ -120,7 +120,7 @@ fun HamrohOutlinedTextField(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HamrohOutlinedTextField(
+fun HamrohdfOutlinedTextField(
     modifier: Modifier = Modifier,
     value: TextFieldValue,
     onValueChange: (TextFieldValue) -> Unit,

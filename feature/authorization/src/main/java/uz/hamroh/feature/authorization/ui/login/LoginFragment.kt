@@ -1,28 +1,31 @@
 package uz.hamroh.feature.authorization.ui.login
 
-import android.os.Bundle
-import android.view.View
-import androidx.lifecycle.lifecycleScope
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import uz.hamroh.coroutines.launchMain
+import uz.hamroh.feature.authorization.ui.auth_selection.AuthSelectionViewModel
 import uz.hamroh.navigation.AuthNavigation
 import uz.hamroh.ui.base.ComposeFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : ComposeFragment() {
-
-    @Inject lateinit var authNavigation: AuthNavigation
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        lifecycleScope.launchMain { delay(5000)  }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setContent {
-            LoginContent(authNavigation)
+    private val viewModel by viewModels<LoginViewModel>()
+    @Composable
+    override fun ComposeContent() {
+        val state = viewModel.state.collectAsState()
+        LoginContent(loginState = state.value) {
+            when(it) {
+                LoginEffect.NavigateToPrevious -> viewModel.onPreviousScreen()
+                LoginEffect.NavigateToNext -> viewModel.onNextScreen()
+                LoginEffect.NavigateToGoogleAuth -> {}
+                LoginEffect.NavigateToSignUp -> viewModel.onNavigateToSignUp()
+                LoginEffect.NavigateToRestorePassword -> viewModel.onNavigateToRestorePassword()
+                LoginEffect.OnSnackBarDisplayed -> viewModel.onSnackBarDisplayed()
+                is LoginEffect.OnEmailValueChange -> viewModel.onEmailPasswordChange(it.value)
+                is LoginEffect.OnPasswordValueChange -> viewModel.onPasswordChange(it.value)
+            }
         }
     }
 
