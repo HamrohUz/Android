@@ -5,16 +5,17 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-@Suppress("UnstableApiUsage")
 class CommonPlugin : BasePlugin() {
     override fun apply(target: Project) = target.applyAndroid()
 
     private fun Project.applyAndroid() {
         android {
             setCompileSdkVersion(34)
-
+            buildToolsVersion = "34.0.0"
             defaultConfig {
+
                 minSdk = 26
+                targetSdk = 34
             }
 
             buildTypes {

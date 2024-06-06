@@ -10,4 +10,5 @@ data class ValidationResult(
 
     val isNotEmptyAccepted: Boolean
         get() = isAccepted && value.isNotEmpty()
+
 }

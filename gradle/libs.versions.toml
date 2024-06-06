@@ -1,5 +1,7 @@
 [versions]
 agp = "8.3.2"
+credentialsVersion = "1.5.0-alpha01"
+hiltNavigationCompose = "1.2.0"
 kotlin = "1.9.23"
 chucker = "4.0.0"
 compose-compiler = "1.5.12"
@@ -8,6 +10,9 @@ coil-version = "2.6.0"
 ksp-version = "1.9.23-1.0.20"
 core-ktx = "1.13.0"
 kotlinCoroutines = "1.7.1"
+playServicesAuth = "19.2.0"
+playServicesAuthApiPhone = "18.1.0"
+playServicesAuthVersion = "21.2.0"
 retrofit = "2.9.0"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
@@ -34,8 +39,11 @@ constraintlayoutCore = "1.0.4"
 materialVersion = "1.11.0"
 navigationCompose = "2.7.7"
 volley = "1.2.1"
+gms = "4.4.2"
+
 
 [libraries]
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-compose" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
@@ -68,6 +76,8 @@ moshi-adapters = { group = "com.squareup.moshi", name = "moshi-adapters", versio
 kotshi-api = { group = "se.ansman.kotshi", name = "api", version.ref = "kotshi" }
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+play-services-auth-api-phone = { module = "com.google.android.gms:play-services-auth-api-phone", version.ref = "playServicesAuthApiPhone" }
+play-services-auth-v2120 = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuthVersion" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 chucker-lib = { module = "com.github.chuckerteam.chucker:library", version.ref = "chucker" }
@@ -102,6 +112,7 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-version" }
 
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -112,6 +123,7 @@ firebaseCrashlytics = { id = "com.google.firebase.crashlytics" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
 kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt-version" }
+gms = { id = "com.google.gms.google-services", version.ref = "gms" }
 
 
 [bundles]
@@ -120,5 +132,4 @@ compose = ["compose-ui", "compose-debug", "compose-material", "compose-paging", 
     "compose-ui-tooling", "compose-ui-tooling-preview", "compose-material3", "androidx-navigation-compose", "coil-compose"]
 room = ["room-runtime", "room-ktx", "room-paging"]
 network = ["cicerone", "retrofit", "converter-gson", "chucker-lib", "moshi-kotlin", "moshi-adapters", "kotshi-api", "converter-moshi", "gson"]
-
 

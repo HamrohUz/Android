@@ -4,42 +4,35 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import uz.hamroh.feature.authorization.data.model.request.AuthRequest
+import uz.hamroh.coroutines.launchIO
+import uz.hamroh.feature.authorization.data.model.response.AuthResponse
 import uz.hamroh.feature.authorization.data.repository.AuthRepository
 import uz.hamroh.navigation.AuthNavigation
+import uz.hamroh.navigation.TripNavigation
+import uz.hamroh.network.ErrorEntity
+import uz.hamroh.network.ResponseWrapper
+import uz.hamroh.store.StoreRepository
 import uz.hamroh.ui.base.BaseViewModel
 import uz.hamroh.ui.util.Validator
-import java.net.HttpURLConnection
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val authNavigation: AuthNavigation,
+    private val tripNavigation: TripNavigation,
+    private val storeRepository: StoreRepository,
     private val authRepository: AuthRepository,
 ) : BaseViewModel<LoginState, LoginEffect>(LoginState()) {
     fun onNavigateToRestorePassword() {
         authNavigation.navigateToRestorePassword()
     }
 
-    fun onEmailPasswordChange(email: String) {
-        viewModelScope.launch {
-            setState {
-                copy(
-                    email = Validator.validateEmail(email)
-                )
-            }
-        }
+    fun onEmailChange(email: String) {
+        setState { copy(email = Validator.validateEmail(email)) }
     }
 
     fun onPasswordChange(value: String) {
-        viewModelScope.launch {
-            setState {
-                copy(
-                    password = Validator.validatePassword(value)
-                )
-            }
-        }
+        setState { copy(password = Validator.validatePassword(value)) }
     }
 
     fun onNavigateToSignUp() {
@@ -56,21 +49,45 @@ class LoginViewModel @Inject constructor(
 
     fun onNextScreen() {
         viewModelScope.launch {
-            try {
-                authRepository.login(
-                    AuthRequest(
-                        email = state.value.email.value,
-                        password = state.value.password.value
-                    )
-                )
-            } catch (throwable: Throwable) {
-                if(throwable is HttpException){
-                    val error = throwable.message?.split(" ", limit = 3)?.getOrNull(2) ?: "Unknown error"
-                    when(throwable.code()){
-                        HttpURLConnection.HTTP_NOT_FOUND -> setState { copy(error = error) }
-                        HttpURLConnection.HTTP_NOT_ACCEPTABLE -> authNavigation.navigateToEmailVerification(state.value.email.value)
-                        HttpURLConnection.HTTP_INTERNAL_ERROR -> setState { copy(error = error) }
+            val response = authRepository.login(state.value.email.value, state.value.password.value)
+            handleResult(response)
+        }
+    }
+
+    fun onGoogleSignIn(token: String) {
+        viewModelScope.launch {
+            handleResult(authRepository.authorizeWithGoogle(token))
+        }
+    }
+
+    private fun handleResult(result: ResponseWrapper<AuthResponse>) {
+        when (result) {
+            is ResponseWrapper.Success -> {
+                val token = result.data.data.token
+                val email = result.data.data.user.email
+                val name = result.data.data.user.name
+                viewModelScope.launchIO {
+                    storeRepository.setToken(token)
+                    storeRepository.setUserEmail(email)
+                    storeRepository.setName(name)
+                }
+                tripNavigation.navigateToMain()
+            }
+
+            is ResponseWrapper.Error -> {
+                when (result.error) {
+                    is ErrorEntity.IsNotAcceptable -> {
+                        viewModelScope.launch {
+                            authNavigation.navigateToEmailVerification(
+                                state.value.email.value,
+                                state.value.password.value
+                            )
+                        }
                     }
+
+                    is ErrorEntity.Unauthorized -> setState { copy(error = (result.error as ErrorEntity.Unauthorized).message) }
+                    is ErrorEntity.NotFound -> setState { copy(error = (result.error as ErrorEntity.NotFound).message) }
+                    else -> setState { copy(error = "Сервис не доступен") }
                 }
             }
         }

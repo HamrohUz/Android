@@ -1,6 +1,8 @@
 package uz.hamroh.store
 
+import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +16,15 @@ object TripModule {
     @Provides
     @Singleton
     fun provideStoreRepository(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
+        sharedPreferences: SharedPreferences
     ): StoreRepository {
-        return Store(context)
+        return Store(context, sharedPreferences)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences( @ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("Store", Context.MODE_PRIVATE)
     }
 }

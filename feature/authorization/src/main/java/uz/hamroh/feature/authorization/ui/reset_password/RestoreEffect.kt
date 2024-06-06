@@ -5,5 +5,6 @@ sealed interface RestoreEffect {
     data object OnNavigateToPrevious: RestoreEffect
     data class OnPasswordChange(val password: String): RestoreEffect
     data class OnEmailChange(val email: String): RestoreEffect
+    data object OnSnackBarDisplayed: RestoreEffect
 
 }
