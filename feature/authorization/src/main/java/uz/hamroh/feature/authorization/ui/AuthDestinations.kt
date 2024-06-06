@@ -34,12 +34,16 @@ class AuthNavigationImpl(private val appCoordinator: AppCoordinator) : AuthNavig
         appCoordinator.navigateTo(SignUp())
     }
 
-    override fun navigateToEmailVerification(email: String, routeIntent: RouteIntent ) {
-        appCoordinator.navigateTo(EmailVerification(email, routeIntent))
+    override fun navigateToEmailVerification(email: String, password: String, routeIntent: RouteIntent ) {
+        appCoordinator.navigateTo(EmailVerification(email, password, routeIntent))
     }
 
     override fun navigateToAuthStatus(title: String, message: String) {
         appCoordinator.navigateTo(AuthStatus(title, message))
+    }
+
+    override fun replaceToLogin() {
+        appCoordinator.replace(Login())
     }
 
     override fun navigateBack() {
@@ -58,5 +62,5 @@ object AuthScreens {
 
     fun SignUp() = FragmentScreen { SignUpFragment() }
 
-    fun EmailVerification(email: String, routeIntent: RouteIntent) = FragmentScreen { EmailVerificationFragment(email, routeIntent) }
+    fun EmailVerification(email: String, password: String, routeIntent: RouteIntent) = FragmentScreen { EmailVerificationFragment(email, password, routeIntent) }
 }

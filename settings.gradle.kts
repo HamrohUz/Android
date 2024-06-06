@@ -1,5 +1,11 @@
 import org.gradle.api.initialization.resolve.RepositoriesMode
 
+include(":feature:trip:driver")
+
+
+include(":feature:trip:passenger")
+
+
 include(":core:store")
 
 
@@ -9,7 +15,7 @@ include(":feature:profile")
 include(":feature:chat")
 
 
-include(":feature:trip")
+include(":feature:home")
 
 
 pluginManagement {

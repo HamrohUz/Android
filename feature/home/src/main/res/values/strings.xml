@@ -1,0 +1,23 @@
+<resources>
+    <string name="profile">Профиль</string>
+    <string name="section_main">Основное</string>
+    <string name="contact_information">Контактная информация</string>
+    <string name="change_data">Изменить данные</string>
+    <string name="security">Безопасность</string>
+    <string name="password_email">Пароль, e-mail</string>
+    <string name="payment_methods">Способы оплаты</string>
+    <string name="link_card">Привязать карту</string>
+    <string name="terms_of_use">Условия использования</string>
+    <string name="terms_of_use_subtitle">Terms of Use</string>
+
+    <string name="section_settings">Настройки</string>
+    <string name="my_cars">Мои авто</string>
+    <string name="add_vehicle">Добавить т/с</string>
+    <string name="my_documents">Мои документы</string>
+    <string name="documents_subtitle">Все необходимое для поездок</string>
+    <string name="exit">Выйти</string>
+    <string name="exit_description">Покинуть приложение</string>
+    <string name="coupon">Купон</string>
+    <string name="discounts">Скидки на поездки</string>
+    <string name="profile_description">Пользователь</string>
+</resources>

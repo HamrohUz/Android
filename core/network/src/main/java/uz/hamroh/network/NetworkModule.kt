@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import uz.hamroh.store.StoreRepository
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -27,8 +28,8 @@ class NetworkModule {
     @Provides
     @Singleton
 
-    fun provideErrorInterceptor(moshi: Moshi): ErrorInterceptor {
-        return ErrorInterceptor(moshi)
+    fun provideErrorInterceptor(moshi: Moshi, storeRepository: StoreRepository): ErrorInterceptor {
+        return ErrorInterceptor(moshi, storeRepository)
     }
 
     @Provides

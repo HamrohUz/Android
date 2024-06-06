@@ -35,6 +35,21 @@ fun HamrohHeaderText(
 }
 
 @Composable
+fun HamrohTitleLargeText(
+    text: String,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign = TextAlign.Center
+) {
+    Text(
+        modifier = modifier,
+        text = text,
+        textAlign = textAlign,
+        color = MaterialTheme.colorScheme.primary,
+        style = MaterialTheme.typography.titleLarge,
+    )
+}
+
+@Composable
 fun HamrohDescriptionText(
     text: String,
     modifier: Modifier = Modifier,

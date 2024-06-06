@@ -14,7 +14,8 @@ android {
 dependencies {
     implementation(project(":navigation"))
     implementation(project(":feature:authorization"))
-    implementation(project(":feature:trip"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:profile"))
     implementation(project(":core:ui"))
     implementation(project(":core:network"))
     implementation(project(":core:coroutines"))

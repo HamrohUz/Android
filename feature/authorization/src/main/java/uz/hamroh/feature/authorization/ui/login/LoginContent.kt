@@ -1,6 +1,6 @@
 package uz.hamroh.feature.authorization.ui.login
 
-import android.annotation.SuppressLint
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -41,24 +41,24 @@ import uz.hamroh.ui.components.HamrohSmallText
 import uz.hamroh.ui.util.ValidationResultType
 
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LoginContent(loginState: LoginState, onLoginEffect: (LoginEffect) -> Unit) {
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackBarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     Scaffold(
         snackbarHost = {
             SnackbarHost(
-                hostState = snackbarHostState,
+                hostState = snackBarHostState,
                 snackbar = { CustomSnackbar(it) }
             )
         },
-    ){
+    ) {
         val interactionSource = remember { MutableInteractionSource() }
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp)
+                .padding(it),
         ) {
             Image(
                 painter = painterResource(uz.hamroh.ui.R.drawable.ic_chevron_left),
@@ -93,7 +93,7 @@ fun LoginContent(loginState: LoginState, onLoginEffect: (LoginEffect) -> Unit) {
                 value = loginState.email.value,
                 onValueChange = { onLoginEffect(LoginEffect.OnEmailValueChange(it)) },
                 isError = loginState.email.acceptance != ValidationResultType.ACCEPTED,
-                supportingText = { HamrohSmallText(text = stringResource(id = loginState.email.acceptance.resId))},
+                supportingText = { HamrohSmallText(text = stringResource(id = loginState.email.acceptance.resId)) },
                 keyboardOptions = KeyboardOptions(
                     capitalization = KeyboardCapitalization.None,
                     keyboardType = KeyboardType.Text,
@@ -133,7 +133,7 @@ fun LoginContent(loginState: LoginState, onLoginEffect: (LoginEffect) -> Unit) {
             )
             HamrohFilledButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { onLoginEffect(LoginEffect.NavigateToNext)},
+                onClick = { onLoginEffect(LoginEffect.NavigateToNext) },
                 enabled = loginState.email.isNotEmptyAccepted && loginState.password.isNotEmptyAccepted
             ) {
                 HamrohButtonText(text = stringResource(R.string.login_header_and_button))
@@ -178,9 +178,9 @@ fun LoginContent(loginState: LoginState, onLoginEffect: (LoginEffect) -> Unit) {
                 )
             }
             LaunchedEffect(key1 = loginState) {
-                if(loginState.error.isNotEmpty()) {
+                if (loginState.error.isNotEmpty()) {
                     scope.launch {
-                        snackbarHostState.showSnackbar(loginState.error)
+                        snackBarHostState.showSnackbar(loginState.error)
                         onLoginEffect(LoginEffect.OnSnackBarDisplayed)
                     }
                 }

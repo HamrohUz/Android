@@ -5,5 +5,6 @@ import uz.hamroh.ui.util.ValidationResult
 data class SignUpState(
     val email: ValidationResult = ValidationResult(),
     val password: ValidationResult = ValidationResult(),
-    val isSignUpButtonEnabled: ValidationResult = ValidationResult(),
+    val isCheckedPolicy: Boolean = false,
+    val error: String = ""
 )

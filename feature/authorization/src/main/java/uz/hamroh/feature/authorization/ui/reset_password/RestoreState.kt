@@ -5,4 +5,5 @@ import uz.hamroh.ui.util.ValidationResult
 data class RestoreState(
     val email: ValidationResult = ValidationResult(),
     val password: ValidationResult = ValidationResult(),
+    val error: String = "",
 )
