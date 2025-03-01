@@ -20,7 +20,7 @@ The project follows a **modular architecture** to ensure **scalability** and **m
 - **User Interface:** [Jetpack Compose](https://developer.android.com/jetpack/compose)
 - **Networking:** [Retrofit](https://square.github.io/retrofit/) for API integration
 - **Dependency Injection:** [Dagger-Hilt](https://dagger.dev/hilt/)
-- **Asynchronous Programming:** [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) and [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)
+- **Asynchronous Programming:** [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 - **Local Data Storage:** [Room Persistence Library](https://developer.android.com/jetpack/androidx/releases/room)
 - **Navigation:** [Cicerone](https://github.com/terrakok/Cicerone) – lightweight library for navigation in Android applications
 - **Build System:** [Gradle with Kotlin DSL](https://developer.android.com/build)
